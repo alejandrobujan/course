@@ -132,7 +132,7 @@ const toggleManualCompletionState = async(toggleButton) => {
         newToggleButton.dispatchEvent(toggledEvent);
         if(completed){
             const dt = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString();
-            const msg1 = dt + " <a href='/moodle/user/profile.php?id='"+ id +"'>" + user + "</a> has completed ";
+            const msg1 = dt + " <a href='/moodle/user/profile.php?id="+ id +"'>" + user + "</a> has completed ";
             const msg2 = msg1 + activityname + ". <a href='/moodle/message/index.php?id="+ id +"'>Ask how!</a><br>";
             var http = new XMLHttpRequest();
             var url = "view.php?id="+courseid;
