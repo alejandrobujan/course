@@ -54,11 +54,12 @@ const TOGGLE_TYPES = {
 let registered = false;
 let id;
 let user;
+let coursename;
 let courseid;
 /**
  * Registers the click event listener for the manual completion toggle button.
  */
-export const init = (first, second, last) => {
+export const init = (first, second, third, last) => {
     if (registered) {
         return;
     }
@@ -71,6 +72,7 @@ export const init = (first, second, last) => {
     });
     id = first;
     user = second;
+    coursename = third;
     courseid = last;
     registered = true;
 };
@@ -131,12 +133,13 @@ const toggleManualCompletionState = async(toggleButton) => {
         // Dispatch the manualCompletionToggled custom event.
         newToggleButton.dispatchEvent(toggledEvent);
         if(completed){
-            const dt = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString();
-            const msg1 = dt + " <a href='/moodle/user/profile.php?id="+ id +"'>" + user + "</a> has completed ";
-            const msg2 = msg1 + activityname + ". <a href='/moodle/message/index.php?id="+ id +"'>Ask how!</a><br>";
+            const dt = "<b>"+new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()+"</b>";
+            const msg1 = dt + " <a href='../user/profile.php?id="+ id +"'>" + user + "</a> has completed ";
+            const msg2 = msg1 + activityname + " in <a href='../course/view.php?id="+courseid+"'>" + coursename + "</a>";
+            const msg3 = msg2 + ". <a href='../message/index.php?id="+ id +"'>Ask how!</a><br>";
             var http = new XMLHttpRequest();
             var url = "view.php?id="+courseid;
-            var params = "line="+msg2;
+            var params = "line="+msg3;
             http.open("POST", url, true);
             http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             http.onreadystatechange = function() {

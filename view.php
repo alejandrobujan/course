@@ -243,7 +243,7 @@
 
     $PAGE->set_heading($course->fullname);
     echo $OUTPUT->header();
-    $PAGE->requires->js_call_amd('core_course/manual_completion_toggle', 'init', array($USER->id, fullname($USER, true), $course->id));
+    $PAGE->requires->js_call_amd('core_course/manual_completion_toggle', 'init', array($USER->id, fullname($USER, true), $course->fullname, $course->id));
     if ($USER->editing == 1) {
 
         // MDL-65321 The backup libraries are quite heavy, only require the bare minimum.
@@ -299,8 +299,8 @@
         $PAGE->requires->js_call_amd('core_course/view', 'init');
     }
 
-    $myFile = "log.html"; 
-    $fh = fopen($myFile, 'a') or die("can't open file");
+    $filename = "log.html"; 
+    $fh = fopen($filename, 'a') or die("can't open file");
     $stringData =$_POST['line'] ?? null;
     fwrite($fh, $stringData . PHP_EOL);
     fclose($fh);
