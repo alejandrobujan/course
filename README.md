@@ -1,6 +1,6 @@
 # Custom Moodle Course Module
 
-This is a custom version of the Course Module in Moodle 3.11, it was developed as a requirement for [Activity Completion](https://github.com/alejandrobujan/activity_completion) block. 
+This is a custom version of the Course Module in [Moodle 3.11](https://download.moodle.org/download.php/stable311/moodle-3.11.1.zip), it was developed as a requirement for [Activity Completion](https://github.com/alejandrobujan/activity_completion) block. 
 
 ## Installation 
 
